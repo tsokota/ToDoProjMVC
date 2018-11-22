@@ -1,0 +1,21 @@
+﻿@model ToDoPr.Models.Task
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <div>
+            @Html.LabelFor(model => model.TaskName, "Введите новое имя задачи:")
+            <p>@Html.EditorFor(model => model.TaskName, new { htmlAttributes=new { @class= "inputDial" } })</p>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.PerformerName, "Введите нового исполнителя:")
+            <p>@Html.EditorFor(model => model.PerformerName, new { htmlAttributes = new { @class = "inputDial" } })</p>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.isDone, "Выберете состояние задачи:")
+            <p>@Html.RadioButton("isDone", true)Выполнена&nbsp;&nbsp; @Html.RadioButton("isDone", false)Не выполнена</p>
+        </div>
+        <center><p><input type="submit" class="btn btn-default"  value="Сохранить" ></p></center>
+    }
+</div>
